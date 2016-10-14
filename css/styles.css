@@ -1,0 +1,394 @@
+html{
+	height:100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+a{
+	color: white;
+	text-decoration: none;
+}
+
+.hidden{
+	display: none;
+}
+
+.grayout{
+	background: #888 !important;
+	color: white !important;
+}
+
+div.header{
+	background-color: #efefef;
+	padding: 1.0rem 0;
+	margin: 0;
+}
+
+.header img{
+	height: 68px; /*vertically center the logo*/
+	float: left;
+	margin-left: 20px;
+}
+.header h2{
+	display: inline-block;
+	margin-left: 20%;
+}
+
+/************navigation bar style************/
+
+nav li{
+	margin-left: -16px;
+}
+
+nav li:hover{
+	cursor: pointer;
+}
+
+nav span{
+  color:#fff;
+  background:#888;
+  position:relative;
+  display:inline-block;
+  margin:0 22px;
+  padding:4px 9px;
+  border-radius:4px 4px 0 0;
+  text-decoration: none;
+  font-size: 1.0rem;
+}
+
+nav span:hover{
+	color:cyan;
+}
+
+nav span:before,
+nav span:after{
+  content:" ";
+  position: absolute;
+  top:0;
+  width: 23px;
+  height: 100%;
+  background-color: #888; 
+}
+nav span:before{
+  border-radius: 16px 0 0 0;
+  transform: skew(-16deg);
+  left: -16px; 
+  border-left: 1px solid #555;
+}
+nav span:after{
+  border-radius: 0 16px 0 0;
+  transform: skew(16deg);
+  right: -16px; 
+  border-right: 1px solid #555;
+  z-index: 1;
+}
+nav li.active span{
+  color:#777;
+  background:#fff;
+  font-weight: bold;
+}
+nav li.active span:before,
+nav li.active span:after{
+  z-index: 1; 
+  background: #fff;
+}
+
+/************Main navigation bar************/
+
+nav.nav-main{
+	width:100%;
+	background: #555;
+}
+
+.nav-main ul{
+	margin-bottom: 0px;
+}
+
+.nav-main li{
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+  	justify-content: center;
+  	padding-top: 1.2em;
+  	margin-bottom: 0
+}
+
+
+/************Fileupload section**********/
+div#fileupload-wrapper{
+	width: 640px;
+	margin-left: 20px;
+}
+
+div#show-selected-default-database{
+	margin-top: 10px;
+	background: #03D0FF;
+}
+
+div#select-rawfile-wrapper{
+	display: none;
+}
+
+/************Fileselect section**********/
+div#fileselect-wrapper{
+	width: 640px;
+	margin-left: 20px;
+	display: none;
+}
+
+/************Parameter section************/
+div#parameter-wrapper{
+	/*margin: 0 auto;*/
+	padding-top: 32px;
+	max-width: 1360px;
+	width: 100%;
+	flex:1;/*for sticky footer*/
+	display: none;
+
+}
+
+div#vm-wrapper{
+	display:inline-block;
+	float:left;
+	margin-left: 2%;
+}
+
+div#vm-section{
+	border: 2px solid #555;
+	width:300px;
+	max-height: 482px;
+	padding:1%;
+	overflow:scroll;
+}
+
+div#fm-wrapper{
+	display:inline-block;
+	float:left;
+	margin-left: 2%;
+}
+
+div#fm-section{
+	border: 2px solid #555;
+	width:300px;
+	max-height: 482px;
+	padding:1%;
+	overflow:scroll;
+}
+
+div#enzyme-wrapper{
+	display:inline-block;
+	float:left;
+	margin-left: 2%;
+}
+
+div#enzyme-section{
+	border: 2px solid #555;
+	width:300px;
+	height: 482px;
+	padding:1%;
+	/*overflow:scroll;*/
+}
+
+div#isotope-wrapper{
+	display:inline-block;
+	float:left;
+	margin-left: 2%;
+}
+
+div#isotope-section-light{
+	border: 2.5px solid #555;
+	border-top: 0;
+	width:300px;
+	max-height: 450px;
+	padding:1%;
+	overflow:scroll;
+}
+
+div#isotope-section-medium{
+	border: 2.5px solid #555;
+	border-top: 0;
+	width:300px;
+	max-height: 450px;
+	padding:1%;
+	overflow:scroll;
+	display:none;
+}
+
+div#isotope-section-heavy{
+	border: 2.5px solid #555;
+	border-top: 0;
+	width:300px;
+	max-height: 450px;
+	padding:1%;
+	overflow:scroll;
+	display:none;
+}
+
+#instrument-resolution-wrapper{
+	display:inline-block;
+	float:left;
+	margin-left: 2%;
+}
+
+#instrument-resolution-wrapper fieldset{
+	width:620px;
+}
+
+#taxonomy-analysis-wrapper{
+	display:inline-block;
+	float:left;
+	margin-left: 2%;
+}
+
+#taxonomy-analysis-wrapper fieldset{
+	width:620px;
+}
+
+/***************Isotope navgation bar*******/
+nav.menu{
+	width:310px;
+}
+
+.menu ul{
+	display: flex;
+  	list-style: none;
+  	padding: 0;
+  	justify-content: center;
+  	padding-top: .5em;
+  	background: #555;
+  	margin-bottom: 0;
+}
+/******************BUTTONS****************/
+/************Raw file buttons********/
+input#open-select-rawfile-btn, input#open-upload-rawfile-btn, input#generateUploadBtn{
+	position: flex;
+	margin-top: 20px;
+	margin-left: 45%;
+	padding: 10px 10px 10px 10px;
+	display: none;
+}
+
+div#open-select-rawfile-label, div#open-upload-rawfile-label, div#generateUploadlabel{
+	/*width: 120px;*/
+	color: white;
+	text-align: center;
+	background: #0390FF;
+	border: 1px solid #0390FF;
+	padding: 5px;
+	margin: 10px;
+	float: left;
+}
+
+div#open-select-rawfile-label:hover, div#open-upload-rawfile-label:hover, div#generateUploadlabel:hover{
+	box-shadow: 4px 4px 5px gray;
+}
+
+input#selectedRawFileListSubmitBtn, input#rawFileUploadSubmitBtn{
+	position: flex;
+	margin-top: 20px;
+	margin-left: 45%;
+	padding: 10px 10px 10px 10px;
+	display: none;
+}
+
+div#selectedRawFileListSubmitLable, div#rawFileUploadSubmitLabel{
+	color: white;
+	text-align: center;
+	background: #0390FF;
+	border: 1px solid #0390FF;
+	padding: 5px;
+	margin: 10px;
+	float: right;
+}
+
+div#selectedRawFileListSubmitLable:hover, div#rawFileUploadSubmitLabel:hover{
+	box-shadow: 4px 4px 5px gray;
+}
+
+input#upload-submit-btn{
+	position: flex;
+	margin-top: 20px;
+	margin-left: 45%;
+	padding: 10px 10px 10px 10px;
+	display: none;
+}
+
+div#fileupload-submit-label{
+	width: 120px;
+	text-align: center;
+	background: #0390FF;
+	border: 1px solid #0390FF;
+	padding: 5px;
+	margin: 10px;
+	float: right;
+}
+
+div#fileupload-submit-label:hover{
+	color: white;
+	box-shadow: 4px 4px 5px gray;
+}
+
+/************Session Submit button********/
+div#session-submit-label-wrapper{
+	display: none;
+}
+
+input#session-submit-btn{
+	position: flex;
+	margin-top: 20px;
+	margin-left: 45%;
+	padding: 10px 10px 10px 10px;
+	display: none;
+}
+
+div#session-submit-label{
+	width: 120px;
+	text-align: center;
+	background: #0390FF;
+	border: 1px solid #0390FF;
+	padding: 5px;
+	margin: 10px;
+	float: right;
+}
+
+div#session-submit-label:hover{
+	color: white;
+	box-shadow: 4px 4px 5px gray;
+}
+
+
+/************Setting section************/
+div#setting-wrapper{
+	width: 640px;
+	margin-left: 20px;
+	display: none;
+}
+
+/****************Footer****************/
+.footer{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1.2rem;
+	background-color: #efefef;
+	text-align: center;
+}
+
+#help, #privacy{
+	cursor: pointer;
+	float: right;
+	margin-right: 20px;
+}
+
+#help:hover, #privacy:hover{
+	color: red;
+}
