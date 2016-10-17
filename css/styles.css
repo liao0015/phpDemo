@@ -42,6 +42,37 @@ div.header{
 	margin-left: 20%;
 }
 
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 0 auto;
+    padding: 20px 10px 80px 10px;
+    width: 90%;
+}
+
+/* The Close Button */
+.close {
+    /*color: #aaaaaa;*/
+    /*float: right;*/
+    /*font-size: 25px;
+    font-weight: bold;*/
+}
+
 /************navigation bar style************/
 
 nav li{
@@ -122,27 +153,53 @@ nav.nav-main{
 }
 
 
-/************Fileupload section**********/
+/************Raw file section**********/
 div#fileupload-wrapper{
 	width: 640px;
 	margin-left: 20px;
 }
 
-div#show-selected-default-database{
-	margin-top: 10px;
-	background: #03D0FF;
+div#selected-rawfile-list-wrapper{
+	min-width:80%;
+	min-height: 60px; 
+	float: left;
+}
+
+#selected-rawfile-list-wrapper ul{
+	list-style: none;
+}
+
+#selected-rawfile-list-wrapper input{
+	width: 60px;
+	margin-right: 20px;
+	margin-bottom: 5px;
 }
 
 div#select-rawfile-wrapper{
 	display: none;
 }
 
-/************Fileselect section**********/
+div#upload-msg-wrapper{
+	min-width:80%;
+	min-height: 60px; 
+	float: left;
+}
+
+.upload-error-msg{
+	color: red;
+}
+
+.upload-complete-msg{
+	color:green;
+}
+
+/************Database section**********/
 div#fileselect-wrapper{
 	width: 640px;
 	margin-left: 20px;
 	display: none;
 }
+
 
 /************Parameter section************/
 div#parameter-wrapper{
@@ -268,6 +325,7 @@ nav.menu{
 }
 /******************BUTTONS****************/
 /************Raw file buttons********/
+
 input#open-select-rawfile-btn, input#open-upload-rawfile-btn, input#generateUploadBtn{
 	position: flex;
 	margin-top: 20px;
@@ -299,7 +357,7 @@ input#selectedRawFileListSubmitBtn, input#rawFileUploadSubmitBtn{
 	display: none;
 }
 
-div#selectedRawFileListSubmitLable, div#rawFileUploadSubmitLabel{
+div#selectedRawFileListSubmitLable, div#rawFileUploadSubmitLabel, div#selectedRawFileListCloseLable{
 	color: white;
 	text-align: center;
 	background: #0390FF;
@@ -309,7 +367,7 @@ div#selectedRawFileListSubmitLable, div#rawFileUploadSubmitLabel{
 	float: right;
 }
 
-div#selectedRawFileListSubmitLable:hover, div#rawFileUploadSubmitLabel:hover{
+div#selectedRawFileListSubmitLable:hover, div#rawFileUploadSubmitLabel:hover, div#selectedRawFileListCloseLable:hover{
 	box-shadow: 4px 4px 5px gray;
 }
 
@@ -338,7 +396,7 @@ div#fileupload-submit-label:hover{
 
 /************Session Submit button********/
 div#session-submit-label-wrapper{
-	display: none;
+	/*display: none;*/
 }
 
 input#session-submit-btn{
@@ -364,13 +422,6 @@ div#session-submit-label:hover{
 	box-shadow: 4px 4px 5px gray;
 }
 
-
-/************Setting section************/
-div#setting-wrapper{
-	width: 640px;
-	margin-left: 20px;
-	display: none;
-}
 
 /****************Footer****************/
 .footer{

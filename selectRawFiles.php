@@ -2,8 +2,10 @@
 <?php
 
 /***********raw files upload section*********/
-echo '<div id="select-rawfile-wrapper"><h3>Select Raw Files</h3>';
+echo '<div id="select-rawfile-wrapper" class="modal">';
 //choose from existing file
+echo '<div class="modal-content">
+        <h3>Select Raw Files</h3>';
 echo '<fieldset id="choose-existing-rawfiles"><legend>Existing raw files in your directory:</legend>';
 //open output directory
 $dir_rawfiles = "../Metalab_data/raw_files";
@@ -22,7 +24,10 @@ if(is_dir($dir_rawfiles)){
         closedir($dh);
     }
 }
-echo '</fieldset><div id="selectedRawFileListSubmitLable"><label>Submit</label></div></div>';  //END choose from existing file
+echo '</fieldset>
+    <div id="selectedRawFileListCloseLable" class="close"><label>Close</label></div>
+    <div id="selectedRawFileListSubmitLable"><label>Submit</label></div>
+    </div></div>';  //END choose from existing file
 ?>
 
 

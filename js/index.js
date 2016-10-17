@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////
 var inputRadioArray = document.querySelectorAll('input[type="radio"]');
 var fieldsetArray = document.querySelectorAll("fieldset");
+var closeButton = document.querySelectorAll(".close");
 
 ////////////////////////////////////////////////////
 //				Main navigation tabs
@@ -16,7 +17,6 @@ var selectFileSec = document.getElementById("fileselect-wrapper");
 var parameterSec = document.getElementById("parameter-wrapper");
 
 var sessionSubmitBtn = document.getElementById("session-submit-label-wrapper");
-var uploadSubmitBtn = document.getElementById("fileupload-submit-label-wrapper");
 
 if(tabUploadFiles){
 	tabUploadFiles.addEventListener("click", function(){
@@ -26,8 +26,7 @@ if(tabUploadFiles){
 		uploadFileSec.style.display="block";
 		selectFileSec.style.display="none";
 		parameterSec.style.display="none";
-		sessionSubmitBtn.style.display="none";
-		uploadSubmitBtn.style.display="block";
+		sessionSubmitBtn.style.display="block";
 	});
 }
 
@@ -40,7 +39,6 @@ if(tabSelectFiles){
 		selectFileSec.style.display="block";
 		parameterSec.style.display="none";
 		sessionSubmitBtn.style.display="block";
-		uploadSubmitBtn.style.display="none";
 	});
 }
 
@@ -53,16 +51,25 @@ if(tabParameters){
 		selectFileSec.style.display="none";
 		parameterSec.style.display="block";
 		sessionSubmitBtn.style.display="block";
-		uploadSubmitBtn.style.display="none";
 	});
 }
 
+//close select raw file modal
+if(closeButton[0]){
+	closeButton[0].addEventListener("click", function(){
+		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:none");
+	});
+}
+
+
 ////////////////////////////////////////////////////
-//				Raw files
+//				Select Raw files
 ////////////////////////////////////////////////////
 var generateUploadBtn = document.getElementById("generateUploadBtn");
 var showRawFileListBtn = document.getElementById("open-select-rawfile-label");
 var submitSelectedRawfiles = document.getElementById("selectedRawFileListSubmitLable");
+var divRawList = document.getElementById("selected-rawfile-list-wrapper");
+var uploadMessage = document.getElementById("upload-msg-wrapper");
 
 if(generateUploadBtn){
 	generateUploadBtn.addEventListener("click", function(){
@@ -80,6 +87,7 @@ if(showRawFileListBtn){
 	showRawFileListBtn.addEventListener("click", function(){
 		//alert("open");
 		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:block");
+		uploadMessage.innerHTML="";
 	});
 }
 
@@ -110,35 +118,34 @@ function removeRawFile(index){
 		}
 	}
 }
+
 if(submitSelectedRawfiles){
 	submitSelectedRawfiles.addEventListener("click", function(){
-	console.log(selectedRawFiles);
-	document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:none");
-	var divRawList = document.getElementById("selected-rawfile-list-wrapper");
-	var ulRawList = document.createElement("ul");
+		console.log(selectedRawFiles);
+		divRawList.innerHTML="";
+		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:none");
+		var ulRawList = document.createElement("ul");
 
-	for (var j = 0; j< selectedRawFiles.length; j++){
-		var liRawList = document.createElement("li");
-		var input = document.createElement("input");
-		input.setAttribute("type", "hidden");
-		input.setAttribute("name", "selectedRawFileList[]");
-		input.setAttribute("value", selectedRawFiles[j]);
-		var txtInput = document.createElement("input");
-		txtInput.setAttribute("type", "text");
-		txtInput.setAttribute("name", "experiments");
-		var text = document.createTextNode(selectedRawFiles[j]);
-		liRawList.appendChild(txtInput);
-		liRawList.appendChild(text); 
-		liRawList.appendChild(input);
+		for (var j = 0; j< selectedRawFiles.length; j++){
+			var liRawList = document.createElement("li");
+			var input = document.createElement("input");
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", "selectedRawFileList[]");
+			input.setAttribute("value", selectedRawFiles[j]);
+			var txtInput = document.createElement("input");
+			txtInput.setAttribute("type", "text");
+			txtInput.setAttribute("name", "experiments[]");
+			var text = document.createTextNode(selectedRawFiles[j]);
+			liRawList.appendChild(txtInput);
+			liRawList.appendChild(text); 
+			liRawList.appendChild(input);
 
-		ulRawList.appendChild(liRawList);
-	}
-	//divRawList.innerHTML="";
-	divRawList.appendChild(ulRawList);
-})
+			ulRawList.appendChild(liRawList);
+		}
+		
+		divRawList.appendChild(ulRawList);
+	});
 }
-
-
 
 ////////////////////////////////////////////////////
 //				Isotope label tabs
@@ -152,102 +159,39 @@ var heavyIsotopeList = document.getElementById("isotope-section-heavy");
 
 if(tabLight){
 	tabLight.addEventListener("click", function(){
-	//alert("show table one");
-	tabLight.setAttribute("class", "active");
-	tabMedium.removeAttribute("class", "active");
-	tabHeavy.removeAttribute("class", "active");
-	lightIsotopeList.style.display="block";
-	mediumIsotopeList.style.display="none";
-	heavyIsotopeList.style.display="none";
-});	
+		//alert("show table one");
+		tabLight.setAttribute("class", "active");
+		tabMedium.removeAttribute("class", "active");
+		tabHeavy.removeAttribute("class", "active");
+		lightIsotopeList.style.display="block";
+		mediumIsotopeList.style.display="none";
+		heavyIsotopeList.style.display="none";
+	});	
 }
 
 if(tabMedium){
 	tabMedium.addEventListener("click", function(){
-	//alert("show table two");
-	tabLight.removeAttribute("class", "active");
-	tabMedium.setAttribute("class", "active");
-	tabHeavy.removeAttribute("class", "active");
-	lightIsotopeList.style.display="none";
-	mediumIsotopeList.style.display="block";
-	heavyIsotopeList.style.display="none";
-});
+		//alert("show table two");
+		tabLight.removeAttribute("class", "active");
+		tabMedium.setAttribute("class", "active");
+		tabHeavy.removeAttribute("class", "active");
+		lightIsotopeList.style.display="none";
+		mediumIsotopeList.style.display="block";
+		heavyIsotopeList.style.display="none";
+	});
 }
 
 if(tabHeavy){
-	tabHeavy.addEventListener("click", function(){
-	//alert("show table two");
-	tabLight.removeAttribute("class", "active");
-	tabMedium.removeAttribute("class", "active");
-	tabHeavy.setAttribute("class", "active");
-	lightIsotopeList.style.display="none";
-	mediumIsotopeList.style.display="none";
-	heavyIsotopeList.style.display="block";
-});
+		tabHeavy.addEventListener("click", function(){
+		//alert("show table two");
+		tabLight.removeAttribute("class", "active");
+		tabMedium.removeAttribute("class", "active");
+		tabHeavy.setAttribute("class", "active");
+		lightIsotopeList.style.display="none";
+		mediumIsotopeList.style.display="none";
+		heavyIsotopeList.style.display="block";
+	});
 }
-
-
-////////////////////////////////////////////////////
-//				Upload files
-////////////////////////////////////////////////////
-
-/**************Select Database************/
-// var dfDatabaseRad = document.getElementById("dfDatabase");
-// var cusDatabaseRad = document.getElementById("cusDatabase");
-
-// dfDatabaseRad.addEventListener("click", function(){
-// 	//alert("clicked df");
-// 	console.log(dfDatabaseRad.hasAttribute("checked"));
-// 	if(dfDatabaseRad.hasAttribute("checked") == false){
-// 		dfDatabaseRad.setAttribute("checked", "checked");
-// 		cusDatabaseRad.removeAttribute("checked", "checked");
-// 		obtainFiledsets(fieldsetArray, "custome-database-upload").setAttribute("disabled", "disabled");
-// 		obtainFiledsets(fieldsetArray, "default-databse-options").removeAttribute("disabled", "disabled");
-// 		document.getElementById("show-selected-default-database").removeAttribute("class", "grayout");
-// 	}
-// 	console.log(dfDatabaseRad.hasAttribute("checked"));
-// });
-
-// cusDatabaseRad.addEventListener("click", function(){
-// 	//alert("clicked cus");
-// 	console.log(cusDatabaseRad.hasAttribute("checked"));
-// 	if(cusDatabaseRad.hasAttribute("checked") == false){
-// 		cusDatabaseRad.setAttribute("checked", "checked");
-// 		dfDatabaseRad.removeAttribute("checked", "checked");
-// 		obtainFiledsets(fieldsetArray, "custome-database-upload").removeAttribute("disabled", "disabled");
-// 		obtainFiledsets(fieldsetArray, "default-databse-options").setAttribute("disabled", "disabled");
-// 		document.getElementById("show-selected-default-database").setAttribute("class", "grayout");
-// 	}
-// 	console.log(cusDatabaseRad.hasAttribute("checked"));
-// });
-
-
-/**************Choose raw files************/
-// var existingRawFileRad = document.getElementById("existing-raw-files");
-// var addRawFileRad = document.getElementById("new-raw-files");
-
-// existingRawFileRad.addEventListener("click", function(){
-// 	console.log(existingRawFileRad.hasAttribute("checked"));
-// 	if(existingRawFileRad.hasAttribute("checked") == false){
-// 		existingRawFileRad.setAttribute("checked", "checked");
-// 		addRawFileRad.removeAttribute("checked", "checked");
-// 		obtainFiledsets(fieldsetArray, "choose-existing-rawfiles").removeAttribute("disabled", "disabled");
-// 		obtainFiledsets(fieldsetArray, "raw-files-upload").setAttribute("disabled", "disabled");
-// 	}
-// 	console.log(existingRawFileRad.hasAttribute("checked"));
-// });
-
-// addRawFileRad.addEventListener("click", function(){
-// 	console.log(addRawFileRad.hasAttribute("checked"));
-// 	if(addRawFileRad.hasAttribute("checked") == false){
-// 		existingRawFileRad.removeAttribute("checked", "checked");
-// 		addRawFileRad.setAttribute("checked", "checked");
-// 		obtainFiledsets(fieldsetArray, "choose-existing-rawfiles").setAttribute("disabled", "disabled");
-// 		obtainFiledsets(fieldsetArray, "raw-files-upload").removeAttribute("disabled", "disabled");
-// 	}
-// 	console.log(addRawFileRad.hasAttribute("checked"));
-// });
-
 
 
 /**************custom functions************/
