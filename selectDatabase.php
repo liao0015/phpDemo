@@ -1,8 +1,7 @@
 <?php
 
 /*************select database section***************/
-echo '<div id="select-database-wrapper">';
-echo '<h3>Select Database</h3>';
+echo '<h3>Pick a Database</h3>';
 //default databse section
 echo '<fieldset id="default-database-options">
             <legend>Available database options (You can only selecte one per analysis):</legend>';
@@ -25,5 +24,5 @@ if(is_dir($dir_database)){
     }
 }
             
-echo '</fieldset></div>';//END select database section
+echo '</fieldset>';//END select database section
 ?>

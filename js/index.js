@@ -12,8 +12,8 @@ var tabUploadFiles = document.getElementById("tab-rawfile");
 var tabSelectFiles = document.getElementById("tab-selectfile");
 var tabParameters = document.getElementById("tab-parameter");
 
-var uploadFileSec = document.getElementById("fileupload-wrapper");
-var selectFileSec = document.getElementById("fileselect-wrapper");
+var rawFileSec = document.getElementById("rawfile-wrapper");
+var selectDatabaseSec = document.getElementById("select-database-wrapper");
 var parameterSec = document.getElementById("parameter-wrapper");
 
 var sessionSubmitBtn = document.getElementById("session-submit-label-wrapper");
@@ -23,10 +23,11 @@ if(tabUploadFiles){
 		tabUploadFiles.setAttribute("class", "active");
 		tabSelectFiles.removeAttribute("class", "active");
 		tabParameters.removeAttribute("class", "active");
-		uploadFileSec.style.display="block";
-		selectFileSec.style.display="none";
+		rawFileSec.style.display="block";
+		selectDatabaseSec.style.display="none";
 		parameterSec.style.display="none";
-		sessionSubmitBtn.style.display="block";
+		//buttons
+		rawFileNextBtn.style.display="block";
 	});
 }
 
@@ -35,10 +36,11 @@ if(tabSelectFiles){
 		tabUploadFiles.removeAttribute("class", "active");
 		tabSelectFiles.setAttribute("class", "active");
 		tabParameters.removeAttribute("class", "active");
-		uploadFileSec.style.display="none";
-		selectFileSec.style.display="block";
+		rawFileSec.style.display="none";
+		selectDatabaseSec.style.display="block";
 		parameterSec.style.display="none";
-		sessionSubmitBtn.style.display="block";
+		//buttons
+		databaseNextBtn.style.display="block";
 	});
 }
 
@@ -47,12 +49,20 @@ if(tabParameters){
 		tabUploadFiles.removeAttribute("class", "active");
 		tabSelectFiles.removeAttribute("class", "active");
 		tabParameters.setAttribute("class", "active");
-		uploadFileSec.style.display="none";
-		selectFileSec.style.display="none";
+		rawFileSec.style.display="none";
+		selectDatabaseSec.style.display="none";
 		parameterSec.style.display="block";
+		//buttons
 		sessionSubmitBtn.style.display="block";
+		if(rawFileNextBtn){
+			rawFileNextBtn.style.display="none";
+		}
 	});
 }
+
+////////////////////////////////////////////////////
+//				Page specific navigation buttons
+////////////////////////////////////////////////////
 
 //close select raw file modal
 if(closeButton[0]){
@@ -60,6 +70,35 @@ if(closeButton[0]){
 		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:none");
 	});
 }
+
+//next step buttons click eventlistener
+var rawFileNextBtn = document.getElementById("rawfile-nextBtn-label");
+if(rawFileNextBtn){
+	rawFileNextBtn.addEventListener("click",function(){
+		tabUploadFiles.removeAttribute("class", "active");
+		tabSelectFiles.setAttribute("class", "active");
+		tabParameters.removeAttribute("class", "active");
+		rawFileSec.style.display="none";
+		selectDatabaseSec.style.display="block";
+		parameterSec.style.display="none";
+		rawFileNextBtn.style.display="none";
+	});
+}
+
+var databaseNextBtn = document.getElementById("database-nextBtn-label");
+if(databaseNextBtn){
+	databaseNextBtn.addEventListener("click", function(){
+		tabUploadFiles.removeAttribute("class", "active");
+		tabSelectFiles.removeAttribute("class", "active");
+		tabParameters.setAttribute("class", "active");
+		rawFileSec.style.display="none";
+		selectDatabaseSec.style.display="none";
+		parameterSec.style.display="block";
+		//buttons
+		databaseNextBtn.style.display="none";
+	});
+}
+
 
 
 ////////////////////////////////////////////////////
@@ -119,11 +158,16 @@ function removeRawFile(index){
 	}
 }
 
+//generate selected raw file list
 if(submitSelectedRawfiles){
 	submitSelectedRawfiles.addEventListener("click", function(){
 		console.log(selectedRawFiles);
 		divRawList.innerHTML="";
 		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:none");
+		var fieldsetRawList = document.createElement("fieldset");
+		var fieldLegend = document.createElement("legend");
+		fieldLegend.appendChild(document.createTextNode("Setup experiment:"));
+		fieldsetRawList.appendChild(fieldLegend);
 		var ulRawList = document.createElement("ul");
 
 		for (var j = 0; j< selectedRawFiles.length; j++){
@@ -143,7 +187,8 @@ if(submitSelectedRawfiles){
 			ulRawList.appendChild(liRawList);
 		}
 		
-		divRawList.appendChild(ulRawList);
+		fieldsetRawList.appendChild(ulRawList);
+		divRawList.appendChild(fieldsetRawList);
 	});
 }
 

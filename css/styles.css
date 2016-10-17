@@ -17,6 +17,14 @@ a{
 	text-decoration: none;
 }
 
+.error-msg{
+	color: red;
+}
+
+.complete-msg{
+	color:green;
+}
+
 .hidden{
 	display: none;
 }
@@ -154,15 +162,15 @@ nav.nav-main{
 
 
 /************Raw file section**********/
-div#fileupload-wrapper{
-	width: 640px;
+div#rawfile-wrapper{
+	padding-top: 32px;
+	width: 75%;
 	margin-left: 20px;
 }
 
 div#selected-rawfile-list-wrapper{
 	min-width:80%;
-	min-height: 60px; 
-	float: left;
+	min-height: 100px; 
 }
 
 #selected-rawfile-list-wrapper ul{
@@ -185,16 +193,9 @@ div#upload-msg-wrapper{
 	float: left;
 }
 
-.upload-error-msg{
-	color: red;
-}
-
-.upload-complete-msg{
-	color:green;
-}
-
 /************Database section**********/
-div#fileselect-wrapper{
+div#select-database-wrapper{
+	padding-top: 32px;
 	width: 640px;
 	margin-left: 20px;
 	display: none;
@@ -296,7 +297,7 @@ div#isotope-section-heavy{
 }
 
 #instrument-resolution-wrapper fieldset{
-	width:620px;
+	width:600px;
 }
 
 #taxonomy-analysis-wrapper{
@@ -306,7 +307,7 @@ div#isotope-section-heavy{
 }
 
 #taxonomy-analysis-wrapper fieldset{
-	width:620px;
+	width:600px;
 }
 
 /***************Isotope navgation bar*******/
@@ -323,14 +324,14 @@ nav.menu{
   	background: #555;
   	margin-bottom: 0;
 }
+
 /******************BUTTONS****************/
-/************Raw file buttons********/
 
 input#open-select-rawfile-btn, input#open-upload-rawfile-btn, input#generateUploadBtn{
-	position: flex;
+	/*position: flex;
 	margin-top: 20px;
 	margin-left: 45%;
-	padding: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;*/
 	display: none;
 }
 
@@ -341,7 +342,7 @@ div#open-select-rawfile-label, div#open-upload-rawfile-label, div#generateUpload
 	background: #0390FF;
 	border: 1px solid #0390FF;
 	padding: 5px;
-	margin: 10px;
+	margin: 0;
 	float: left;
 }
 
@@ -357,17 +358,21 @@ input#selectedRawFileListSubmitBtn, input#rawFileUploadSubmitBtn{
 	display: none;
 }
 
-div#selectedRawFileListSubmitLable, div#rawFileUploadSubmitLabel, div#selectedRawFileListCloseLable{
+div#selectedRawFileListCloseLable, a#rawFileUploadCloseLabel{
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+div#selectedRawFileListSubmitLable, div#rawFileUploadSubmitLabel, div#selectedRawFileListCloseLable, a#rawFileUploadCloseLabel, div#rawfile-nextBtn-label, div#database-nextBtn-label{
 	color: white;
 	text-align: center;
 	background: #0390FF;
 	border: 1px solid #0390FF;
 	padding: 5px;
-	margin: 10px;
 	float: right;
 }
 
-div#selectedRawFileListSubmitLable:hover, div#rawFileUploadSubmitLabel:hover, div#selectedRawFileListCloseLable:hover{
+div#selectedRawFileListSubmitLable:hover, div#rawFileUploadSubmitLabel:hover, div#selectedRawFileListCloseLable:hover, a#rawFileUploadCloseLabel:hover, div#rawfile-nextBtn-label:hover, div#database-nextBtn-label:hover{
 	box-shadow: 4px 4px 5px gray;
 }
 
@@ -385,7 +390,6 @@ div#fileupload-submit-label{
 	background: #0390FF;
 	border: 1px solid #0390FF;
 	padding: 5px;
-	margin: 10px;
 	float: right;
 }
 
@@ -400,14 +404,11 @@ div#session-submit-label-wrapper{
 }
 
 input#session-submit-btn{
-	position: flex;
-	margin-top: 20px;
-	margin-left: 45%;
-	padding: 10px 10px 10px 10px;
 	display: none;
 }
 
 div#session-submit-label{
+	color:white;
 	width: 120px;
 	text-align: center;
 	background: #0390FF;
@@ -422,6 +423,38 @@ div#session-submit-label:hover{
 	box-shadow: 4px 4px 5px gray;
 }
 
+/************Analysis Submit button********/
+
+input#analysis-submit-btn{
+	display: none;
+}
+
+div#analysis-submit-label, a#gohome-submit-label{
+	color: white;
+	display: inline-block;
+	width: 40%;
+	text-align: center;
+	background: #0390FF;
+	border: 1px solid #0390FF;
+	padding: 5px;
+	margin: 10px;
+}
+
+div#analysis-submit-label:hover, a#gohome-submit-label:hover{
+	color: white;
+	box-shadow: 4px 4px 5px gray;
+}
+
+/****************Summary page****************/
+
+div#summary-wrapper{
+	width:60%;
+	margin: 0 auto;
+}
+
+.title-decoration{
+	text-align: center;
+}
 
 /****************Footer****************/
 .footer{

@@ -23,8 +23,10 @@ echo '<div id="upload-rawfile-wrapper"><h3>Upload Raw Files</h3>
             	<label for="generateUploadBtn">Upload more...</label>
             </div>
         </fieldset><input type="submit" name="rawFileUploadSubmit" id="rawFileUploadSubmitBtn">
+        
         <div id="rawFileUploadSubmitLabel"><label for="rawFileUploadSubmitBtn">Upload Raw Files</label></div>
         </form>
+        <a href="index.php" id="rawFileUploadCloseLabel">Close</a>
     </div>'; //END add new raw files
 
 echo '<div class="footer">
@@ -32,8 +34,6 @@ echo '<div class="footer">
 			<div id="help">Help</div>
 			<div id="privacy">Privacy and terms</div>
 		</div>
-
-		<script src="js/index.js"></script>
 	</body>
 	</html>';
 ?>

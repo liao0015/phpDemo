@@ -17,7 +17,7 @@ if(is_dir($dir_rawfiles)){
             if($file !== "." && $file !== ".."){
                 if(filetype($dir_rawfiles."/".$file) == "file"){
                     echo '<div><input class="raw-file-list" type="checkbox" name="existingRawFileList[]" value="'.$file.'" /><label>'.$file.'</label></div>';
-                    //echo filetype($dir_rawfiles."/".$file);
+                    echo filetype($dir_rawfiles."/".$file);
                 }
             }
         }

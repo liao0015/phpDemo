@@ -24,45 +24,60 @@
 
 <form action="send.php" method="POST" enctype="multipart/form-data">
 
-	<!-- session submission button  -->
-	<div id="session-submit-label-wrapper" style="width:100%; min-height: 50px;">
-		<div id="session-submit-label">
-			<label for="session-submit-btn">Submit session</label>
-		</div>
-	</div><!-- END session submission button  -->
-
 	<!-- Raw files section -->
-	<div id="fileupload-wrapper">
+	<div id="rawfile-wrapper">
+		<!-- next step button -->
+		<div class="next-button-label-wrapper" style="width:100%; min-height: 50px;">
+			<div id="rawfile-nextBtn-label">
+				<label>Next Step</label>
+			</div>
+		</div>
 		<!-- select Raw files section -->
-		<div id="open-select-rawfile-label"><label>Select Raw Files</label></div>
-		<div id="selected-rawfile-list-wrapper">No selected raw files yet</div>
+		<div style="width: 100%; min-height: 50px;">
+			<div id="open-select-rawfile-label"><label>Select Raw Files</label></div>
+		</div>
+		<div id="selected-rawfile-list-wrapper" style="width: 100%; margin-bottom: 20px;">No selected raw files yet</div>
 		<?php require ("selectRawFiles.php"); ?>
 		
 		<!-- upload Raw files section -->
 		<div id="open-upload-rawfile-label">
 			<a href="openUpload.php"><label for="open-upload-rawfile-btn">Upload Raw Files</label></a>
 		</div>
-		<div id="upload-msg-wrapper">
+		<div id="upload-msg-wrapper" style="width: 100%; margin-top: 20px;">
 			<?php require ("uploadRawfiles.php"); ?>
 		</div>
 	</div>
 
-	<!-- select files section -->
-	<div id="fileselect-wrapper">
+	<!-- select database section -->
+	<div id="select-database-wrapper">
+		<!-- next step button -->
+		<div class="next-button-label-wrapper" style="width:100%; min-height: 50px;">
+			<div id="database-nextBtn-label">
+				<label>Next Step</label>
+			</div>
+		</div>
+		<!-- select database -->
 		<?php require ("selectDatabase.php"); ?>
 	</div>
 
 	<!-- select parameter section -->
 	<div id="parameter-wrapper">
+		<!-- session submission button  -->
+		<div id="session-submit-label-wrapper" style="width:100%; min-height: 50px;">
+			<div id="session-submit-label">
+				<label for="session-submit-btn">Submit session</label>
+			</div>
+		</div><!-- END session submission button  -->
+
 		<?php require ("parameter.php"); ?>
 	
 		<div id="instrument-resolution-wrapper">
 			<h3>Instrument resolution</h3>
 			<fieldset>
 				<legend>Choose resolution setting</legend>
-				<input type="radio" name="instrumentResolution" id="instrumentResolution-high">
+				<input type="radio" name="instrumentResolution" id="instrumentResolution-high" value="High-High" checked>
 				<label for="instrumentResolution-high">High-High</label>
-				<input type="radio" name="instrumentResolution" id="instrumentResolution-low">
+				<input type="radio" name="instrumentResolution" id="instrumentResolution-low" value="High-Low">
 				<label for="instrumentResolution-low">High-Low</label>
 			</fieldset>
 		</div>
@@ -70,9 +85,9 @@
 			<h3>Taxonomy analysis</h3>
 			<fieldset>
 				<legend>Choose taxonomy</legend>
-				<input type="checkbox" name="taxonomy[]" id="taxonomy-buildin">
+				<input type="checkbox" name="taxonomy[]" id="taxonomy-buildin" value="build-in" checked>
 				<label for="taxonomy-buildin">build-in</label>
-				<input type="checkbox" name="taxonomy[]" id="taxonomy-unipept">
+				<input type="checkbox" name="taxonomy[]" id="taxonomy-unipept" value="unipept">
 				<label for="taxonomy-unipept">unipept</label>
 			</fieldset>
 		</div>
