@@ -32,20 +32,29 @@
 				<label>Next Step</label>
 			</div>
 		</div>
-		<!-- select Raw files section -->
-		<div style="width: 100%; min-height: 50px;">
-			<div id="open-select-rawfile-label"><label>Select Raw Files</label></div>
-		</div>
-		<div id="selected-rawfile-list-wrapper" style="width: 100%; margin-bottom: 20px;">No selected raw files yet</div>
-		<?php require ("selectRawFiles.php"); ?>
-		
+
 		<!-- upload Raw files section -->
 		<div id="open-upload-rawfile-label">
 			<a href="openUpload.php"><label for="open-upload-rawfile-btn">Upload Raw Files</label></a>
 		</div>
-		<div id="upload-msg-wrapper" style="width: 100%; margin-top: 20px;">
-			<?php require ("uploadRawfiles.php"); ?>
+		<div id="upload-msg-wrapper" style="width: 100%; margin: 20px 0px;">
+			<fieldset style="width:96%; min-height:50px;">
+				<legend>File upload log:</legend>
+				<?php require ("uploadRawfiles.php"); ?>
+			</fieldset>
 		</div>
+
+		<!-- select Raw files section -->
+		<div style="width: 100%; min-height: 50px;">
+			<div id="open-select-rawfile-label"><label>Select Raw Files</label></div>
+		</div>
+		<div id="selected-rawfile-list-wrapper" style="width:100%;">
+			<fieldset style="width:96%; min-height:50px;">
+				<legend>Setup experiment: </legend>
+				<div id="insert-selected-rawfiles">No selected raw files yet.</div>
+			</fieldset>
+		</div>
+		<?php require ("selectRawFiles.php"); ?>
 	</div>
 
 	<!-- select database section -->

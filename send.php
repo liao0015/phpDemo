@@ -189,12 +189,13 @@ echo '<!DOCTYPE html>
 		<input type="submit" name="check" value="Start Data Analysis" id="analysis-submit-btn"/>
 		<div style="width:100%;">
 			<div id="analysis-submit-label"><label for="analysis-submit-btn">Start Data Analysis</label></div>
-			<a href="index.php" id="gohome-submit-label"><label>Back Home</label></a>
+			<a href="index.php" class="cancel-submit-label"><label>Go Back</label></a>
 		</div>
 		</form>';
 	}else{
 		echo '<p class="error-msg">Missing raw files or database. </p>';
-		echo '<h4 class="error-msg">CANNOT PROCEED</h4>';
+		echo '<div><label style="background:#efefef; color:red; margin: 10px; padding: 5px; width:40%; display: inline-block; text-align: center;">CANNOT PROCEED</label>
+			<a href="index.php" class="cancel-submit-label"><label>Go Back</label></a>';
 	}
 	echo '</div>'; //END summary wrapper
 	echo '<div class="footer">

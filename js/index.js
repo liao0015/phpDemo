@@ -54,9 +54,6 @@ if(tabParameters){
 		parameterSec.style.display="block";
 		//buttons
 		sessionSubmitBtn.style.display="block";
-		if(rawFileNextBtn){
-			rawFileNextBtn.style.display="none";
-		}
 	});
 }
 
@@ -100,14 +97,14 @@ if(databaseNextBtn){
 }
 
 
-
 ////////////////////////////////////////////////////
 //				Select Raw files
 ////////////////////////////////////////////////////
 var generateUploadBtn = document.getElementById("generateUploadBtn");
 var showRawFileListBtn = document.getElementById("open-select-rawfile-label");
 var submitSelectedRawfiles = document.getElementById("selectedRawFileListSubmitLable");
-var divRawList = document.getElementById("selected-rawfile-list-wrapper");
+//var divRawList = document.getElementById("selected-rawfile-list-wrapper");
+var insertSelectedRawList = document.getElementById("insert-selected-rawfiles");
 var uploadMessage = document.getElementById("upload-msg-wrapper");
 
 if(generateUploadBtn){
@@ -126,7 +123,7 @@ if(showRawFileListBtn){
 	showRawFileListBtn.addEventListener("click", function(){
 		//alert("open");
 		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:block");
-		uploadMessage.innerHTML="";
+		//uploadMessage.innerHTML="";
 	});
 }
 
@@ -134,6 +131,7 @@ var rawFileList = document.querySelectorAll("input.raw-file-list");
 var selectedRawFiles = [];
 console.log(rawFileList);
 console.log(selectedRawFiles);
+
 for(var i = 0; i < rawFileList.length; i++){
 	rawFileList[i].addEventListener("change", checkBoxStats(i), false);
 }
@@ -162,12 +160,8 @@ function removeRawFile(index){
 if(submitSelectedRawfiles){
 	submitSelectedRawfiles.addEventListener("click", function(){
 		console.log(selectedRawFiles);
-		divRawList.innerHTML="";
+		insertSelectedRawList.innerHTML="";
 		document.getElementById("select-rawfile-wrapper").setAttribute("style", "display:none");
-		var fieldsetRawList = document.createElement("fieldset");
-		var fieldLegend = document.createElement("legend");
-		fieldLegend.appendChild(document.createTextNode("Setup experiment:"));
-		fieldsetRawList.appendChild(fieldLegend);
 		var ulRawList = document.createElement("ul");
 
 		for (var j = 0; j< selectedRawFiles.length; j++){
@@ -186,9 +180,7 @@ if(submitSelectedRawfiles){
 
 			ulRawList.appendChild(liRawList);
 		}
-		
-		fieldsetRawList.appendChild(ulRawList);
-		divRawList.appendChild(fieldsetRawList);
+		insertSelectedRawList.appendChild(ulRawList);
 	});
 }
 

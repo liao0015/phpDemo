@@ -12,7 +12,7 @@ if(isset($_POST["rawFileUploadSubmit"])){
 		$uploadFileType = $_FILES["RawFileToUpload"]["type"][$i];
 		$uploadFileSize = $_FILES["RawFileToUpload"]["size"][$i];
 		$uploadFileError = $_FILES["RawFileToUpload"]["error"][$i];
-		var_dump($_FILES); //this will output $FILES array
+		//var_dump($_FILES); //this will output $FILES array
 
 		// Check if a file is actually attached
 		if(!isset($_POST['rawFileUploadSubmit'])){
@@ -23,7 +23,7 @@ if(isset($_POST["rawFileUploadSubmit"])){
 		    //     $uploadOk = 0;
 		    // }
 		    // Check if the file size is too large
-		    if($uploadFileSize > 50000000){
+		    if($uploadFileSize > 500000000000){
 		        echo '<div class="error-msg">File size was too large to be uploaded</div>';
 		        $uploadOk = 0;
 		    }
@@ -48,8 +48,7 @@ if(isset($_POST["rawFileUploadSubmit"])){
 		        echo '<div class="complete-msg">File: '.$uploadFileName.'</div>';
 		        echo '<div class="complete-msg">Type: '.$uploadFileType.'</div>';
 		        echo '<div class="complete-msg">Size: '.$uploadFileSize.'</div>';
-		        echo '<div class="complete-msg">The file '. $uploadFileName. ' has been uploaded.</div>'; 
-		        //$results['database'] = $uploadFile;
+		        echo '<div class="complete-msg">The file '. $uploadFileName. ' has been uploaded.</div>';
 		    } else {
 		        // echo "There was an error uploading your file ".$uploadFileName. ".<br/>\n";
 		    }
